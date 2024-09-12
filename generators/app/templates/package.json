@@ -11,7 +11,9 @@
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js --progress --profile --colors",
     "clean": "rm -rf ./assets && mkdir ./assets",
     "pretty": "prettier --single-quote --trailing-comma es5 --write {client,bin,config,server}{/*,/**/*}.js",
-    "precommit": "yarn run pretty"
+    "precommit": "yarn run pretty",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "keywords": [
     "shopify"
@@ -32,7 +34,7 @@
     "android >= 4.4"
   ],
   "dependencies": {
-    "@shopify/polaris": "^2.3.1",
+    "@shopify/polaris": "^3.6.0",
     "@shopify/shopify-express": "^1.0.0-alpha.7",
     "bookshelf": "^0.13.3",
     "bookshelf-modelbase": "^2.10.4",
@@ -66,7 +68,8 @@
     "sprintf": "^0.1.5",
     "url": "^0.11.0",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-middleware": "^1.5.1"
+    "webpack-middleware": "^1.5.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -86,5 +89,6 @@
     "style-loader": "^0.18.2",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
-  }
+  },
+  "snyk": true
 }
